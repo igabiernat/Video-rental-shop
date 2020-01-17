@@ -58,6 +58,12 @@ body {
     text-transform: uppercase;
     color:rgb(168, 15, 23);
 }
+.col-5:hover{
+    color: rgb(127, 153, 230);
+}
+.col-6:hover{
+    color:rgb(202, 139, 142);
+}
 
 
 
