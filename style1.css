@@ -56,7 +56,7 @@ body {
     flex-basis: 10%;
     text-align: center;
     text-transform: uppercase;
-    color:rgb(168, 15, 23);
+    color:red;
 }
 .col-5:hover{
     color: rgb(127, 153, 230);
@@ -64,7 +64,6 @@ body {
 .col-6:hover{
     color:rgb(202, 139, 142);
 }
-
 
 
 
@@ -124,9 +123,50 @@ select{
     padding: 2px 5px 5px 5px
     font-size: 14px;
     color: #714BB9;
+    cursor: pointer;
     
 }
 option{
     text-align: center;
     text-transform: uppercase;
 }
+
+.label{
+    
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    width: 300px;
+    padding-bottom: 10px;
+    padding-top: 20px;
+
+
+}
+.input{
+    direction: ltr;
+    padding-top: 10px;
+    width: 250px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+.content1{
+    border-radius: 2px;
+
+}
+ #confirm{
+    display: inline;
+    border:0;
+    width: 250px;
+    background: #9966FF;
+    padding: .5rem;
+    color:white;
+    margin:3rem 0;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border-radius: 3px;
+
+ }
+ #confirm:hover{color: rgb(163, 136, 189); }
