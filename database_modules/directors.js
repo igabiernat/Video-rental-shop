@@ -3,10 +3,9 @@ module.exports = function(app, pgClient){
 	app.get(['/getAllDirectors'], (request, response) => {
 		pgClient.query('SELECT * FROM directors ORDER BY id ASC', (error, results) => {
 			if (error) {
-                console.log(error);
                 response.status(500).json(error.detail)
             } else {
-                response.status(200).json(results.rows)
+                response.render('directors', {directors: results.rows});
             }
 		})
 	});

@@ -29,10 +29,10 @@ module.exports = function(app, pgClient) {
     });
 	
 	app.post(['/addMovie'], (request, response) => {
-		const title = request.param("title");
-		const director_id = parseInt(request.param("director_id"));
-		const year = parseInt(request.param("year"));
-		const genre_id = parseInt(request.param("genre_id"));
+		const title = request.body.title;
+		const director_id = parseInt(request.body.director_id);
+		const year = parseInt(request.body.year);
+		const genre_id = parseInt(request.body.genre_id);
 		
 		query = {
 			text: 'INSERT INTO movies (title, director_id, year, genre_id) VALUES ($1,$2,$3,$4)',
@@ -41,25 +41,24 @@ module.exports = function(app, pgClient) {
 		pgClient.query(query, (error, results) => {
 			if (error) {
                 response.status(500).json(error.detail)
+				console.log(request.body.title);
             } else {
-                response.status(200).json(results.rows)
+				response.redirect('/');
             }
 		})
 	});
 	
-	app.delete(['/deleteMovie'], (request, response) => {
-		let id = parseInt(request.param("id"));
-		
+	app.delete(['/deleteMovie/:id'], (request, response) => {	
 		query = {
 			text: 'DELETE FROM movies WHERE id=$1',
-			values: [id]
+			values: [request.params.id]
 		};
 		
 		pgClient.query(query, (error, results) => {
             if (error) {
                 response.status(500).json(error.detail)
             } else {
-                response.status(200).json(results.rows)
+                response.status(200);
             }
 		})
     });

@@ -5,7 +5,7 @@ module.exports = function(app, pgClient) {
 			if (error) {
                 response.status(500).json(error.detail)
             } else {
-                response.status(200).json(results.rows)
+				response.render('rentals', {rentals: results.rows})
             }
 		})
 	});
@@ -84,12 +84,12 @@ module.exports = function(app, pgClient) {
 		})
 	});
 	
-	app.get(['/getAllRentalsInfo'], (req, res) => {
+	app.get(['/getAllRentalsInfo'], (request, response) => {
         pgClient.query('SELECT r.id, m.title AS movie_title, CONCAT(u.first_name, \' \', u.last_name) AS user_name, r.date_on, r.date_to FROM rentals r, movies m, users u WHERE r.movie_id = m.id AND r.user_id = u.id ORDER BY id ASC', (error, results) => {
             if (error) {
-                res.status(500).json(error.detail)
+                response.status(500).json(error.detail)
             } else {
-                res.status(200).json(results.rows)
+                response.render('rentals', {rentals: results.rows})
             }
         })
     });

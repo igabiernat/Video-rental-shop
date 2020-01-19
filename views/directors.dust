@@ -1,0 +1,27 @@
+{>"layout" /}
+{<body}
+	<li class="table-header">
+		<div class="col-1">Id</div>
+		<div class="col-2">Imię</div>
+		<div class="col-3">Nazwisko</div>
+		<div class="col-5">Edytuj</div>
+		<div class="col-6">Usuń</div>
+	</li>
+	{#directors}
+	  <li class="table-row" id="movie_{id}">
+		<div class="col-1" data-label="id">{id}</div>
+		<div class="col-2" data-label="first_name">{first_name}</div>
+		<div class="col-3" data-label="last_name">{last_name}</div>
+		<div class="col-5" data-label="edit">
+			<button type="button" class="btn btn-secondary pull-right updateDirector">
+				<span class="fa fa-edit" aria-hidden="true"></span>
+			</button>
+		</div>
+		<div class="col-6" data-label="delete">
+			<button type="button" class="btn btn-danger deleteDirector" data-id="{id}">
+				<span class="fa fa-remove" aria-hidden="true"></span>
+			</button>
+		</div>
+	  </li>
+	{/directors}
+{/body}
