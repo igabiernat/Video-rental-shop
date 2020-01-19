@@ -5,7 +5,7 @@ $(document).ready(function(){
 		if(confirm('Usunąć ten film?')){
 			$.ajax({
 				url: url,
-				type: 'DELETE',
+				method: 'DELETE',
 				success: function(result){
 					console.log('Film usunięty');
 					window.location.href='/';

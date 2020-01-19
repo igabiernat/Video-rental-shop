@@ -4,7 +4,7 @@ module.exports = function(app, pgClient){
 		pgClient.query('SELECT * FROM directors ORDER BY id ASC', (error, results) => {
 			if (error) {
                 response.status(500).json(error.detail)
-            } else {
+              } else {
                 response.render('directors', {directors: results.rows});
             }
 		})

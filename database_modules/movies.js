@@ -41,7 +41,7 @@ module.exports = function(app, pgClient) {
 		pgClient.query(query, (error, results) => {
 			if (error) {
                 response.status(500).json(error.detail)
-				console.log(request.body.title);
+				console.log(request.param("director_id"));
             } else {
 				response.redirect('/');
             }
@@ -58,7 +58,7 @@ module.exports = function(app, pgClient) {
             if (error) {
                 response.status(500).json(error.detail)
             } else {
-                response.status(200);
+                response.send(200);
             }
 		})
     });
