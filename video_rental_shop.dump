@@ -5,6 +5,8 @@
 -- Dumped from database version 12.1
 -- Dumped by pg_dump version 12.1
 
+-- Started on 2020-01-20 21:15:39
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
@@ -21,6 +23,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- TOC entry 205 (class 1259 OID 16410)
 -- Name: directors; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -34,6 +37,7 @@ CREATE TABLE public.directors (
 ALTER TABLE public.directors OWNER TO postgres;
 
 --
+-- TOC entry 204 (class 1259 OID 16408)
 -- Name: directors_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -49,6 +53,8 @@ CREATE SEQUENCE public.directors_id_seq
 ALTER TABLE public.directors_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 2881 (class 0 OID 0)
+-- Dependencies: 204
 -- Name: directors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -56,6 +62,7 @@ ALTER SEQUENCE public.directors_id_seq OWNED BY public.directors.id;
 
 
 --
+-- TOC entry 211 (class 1259 OID 16438)
 -- Name: genres; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -68,6 +75,7 @@ CREATE TABLE public.genres (
 ALTER TABLE public.genres OWNER TO postgres;
 
 --
+-- TOC entry 210 (class 1259 OID 16436)
 -- Name: genres_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -83,6 +91,8 @@ CREATE SEQUENCE public.genres_id_seq
 ALTER TABLE public.genres_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 2882 (class 0 OID 0)
+-- Dependencies: 210
 -- Name: genres_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -90,6 +100,7 @@ ALTER SEQUENCE public.genres_id_seq OWNED BY public.genres.id;
 
 
 --
+-- TOC entry 207 (class 1259 OID 16420)
 -- Name: movies; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -105,6 +116,7 @@ CREATE TABLE public.movies (
 ALTER TABLE public.movies OWNER TO postgres;
 
 --
+-- TOC entry 206 (class 1259 OID 16418)
 -- Name: movies_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -120,6 +132,8 @@ CREATE SEQUENCE public.movies_id_seq
 ALTER TABLE public.movies_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 2883 (class 0 OID 0)
+-- Dependencies: 206
 -- Name: movies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -127,6 +141,7 @@ ALTER SEQUENCE public.movies_id_seq OWNED BY public.movies.id;
 
 
 --
+-- TOC entry 209 (class 1259 OID 16430)
 -- Name: rentals; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -142,6 +157,7 @@ CREATE TABLE public.rentals (
 ALTER TABLE public.rentals OWNER TO postgres;
 
 --
+-- TOC entry 208 (class 1259 OID 16428)
 -- Name: rentals_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -157,6 +173,8 @@ CREATE SEQUENCE public.rentals_id_seq
 ALTER TABLE public.rentals_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 2884 (class 0 OID 0)
+-- Dependencies: 208
 -- Name: rentals_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -164,6 +182,7 @@ ALTER SEQUENCE public.rentals_id_seq OWNED BY public.rentals.id;
 
 
 --
+-- TOC entry 203 (class 1259 OID 16398)
 -- Name: users; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -179,6 +198,7 @@ CREATE TABLE public.users (
 ALTER TABLE public.users OWNER TO postgres;
 
 --
+-- TOC entry 202 (class 1259 OID 16396)
 -- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -194,6 +214,8 @@ CREATE SEQUENCE public.users_id_seq
 ALTER TABLE public.users_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 2885 (class 0 OID 0)
+-- Dependencies: 202
 -- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -201,6 +223,7 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
+-- TOC entry 2712 (class 2604 OID 16413)
 -- Name: directors id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -208,6 +231,7 @@ ALTER TABLE ONLY public.directors ALTER COLUMN id SET DEFAULT nextval('public.di
 
 
 --
+-- TOC entry 2715 (class 2604 OID 16441)
 -- Name: genres id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -215,6 +239,7 @@ ALTER TABLE ONLY public.genres ALTER COLUMN id SET DEFAULT nextval('public.genre
 
 
 --
+-- TOC entry 2713 (class 2604 OID 16423)
 -- Name: movies id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -222,6 +247,7 @@ ALTER TABLE ONLY public.movies ALTER COLUMN id SET DEFAULT nextval('public.movie
 
 
 --
+-- TOC entry 2714 (class 2604 OID 16433)
 -- Name: rentals id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -229,6 +255,7 @@ ALTER TABLE ONLY public.rentals ALTER COLUMN id SET DEFAULT nextval('public.rent
 
 
 --
+-- TOC entry 2711 (class 2604 OID 16401)
 -- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -236,6 +263,8 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 
 --
+-- TOC entry 2869 (class 0 OID 16410)
+-- Dependencies: 205
 -- Data for Name: directors; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -244,10 +273,13 @@ COPY public.directors (id, first_name, last_name) FROM stdin;
 2	Baz	Luhrmann
 3	Peter	Scott
 21	Ridley	Scott
+23	Tim	Burton
 \.
 
 
 --
+-- TOC entry 2875 (class 0 OID 16438)
+-- Dependencies: 211
 -- Data for Name: genres; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -256,10 +288,13 @@ COPY public.genres (id, name) FROM stdin;
 2	Science Fiction
 3	Musical
 4	Drama
+6	Komedia
 \.
 
 
 --
+-- TOC entry 2871 (class 0 OID 16420)
+-- Dependencies: 207
 -- Data for Name: movies; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -273,6 +308,8 @@ COPY public.movies (id, title, director_id, year, genre_id) FROM stdin;
 
 
 --
+-- TOC entry 2873 (class 0 OID 16430)
+-- Dependencies: 209
 -- Data for Name: rentals; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -283,30 +320,39 @@ COPY public.rentals (id, movie_id, user_id, date_on, date_to) FROM stdin;
 
 
 --
+-- TOC entry 2867 (class 0 OID 16398)
+-- Dependencies: 203
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.users (id, first_name, last_name, email, tel) FROM stdin;
 2	Iga	Biernat	iga@mail	+48987654321
 1	Natalia	Bieryt	natalia@mail	12345678
+3	Natalia	Mielimonka	natalia@mail.com	876543219
 \.
 
 
 --
+-- TOC entry 2886 (class 0 OID 0)
+-- Dependencies: 204
 -- Name: directors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.directors_id_seq', 22, true);
+SELECT pg_catalog.setval('public.directors_id_seq', 23, true);
 
 
 --
+-- TOC entry 2887 (class 0 OID 0)
+-- Dependencies: 210
 -- Name: genres_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.genres_id_seq', 5, true);
+SELECT pg_catalog.setval('public.genres_id_seq', 6, true);
 
 
 --
+-- TOC entry 2888 (class 0 OID 0)
+-- Dependencies: 206
 -- Name: movies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -314,6 +360,8 @@ SELECT pg_catalog.setval('public.movies_id_seq', 20, true);
 
 
 --
+-- TOC entry 2889 (class 0 OID 0)
+-- Dependencies: 208
 -- Name: rentals_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -321,13 +369,16 @@ SELECT pg_catalog.setval('public.rentals_id_seq', 2, true);
 
 
 --
+-- TOC entry 2890 (class 0 OID 0)
+-- Dependencies: 202
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 2, true);
+SELECT pg_catalog.setval('public.users_id_seq', 3, true);
 
 
 --
+-- TOC entry 2723 (class 2606 OID 16417)
 -- Name: directors directors_first_name_last_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -336,6 +387,7 @@ ALTER TABLE ONLY public.directors
 
 
 --
+-- TOC entry 2725 (class 2606 OID 16415)
 -- Name: directors directors_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -344,6 +396,7 @@ ALTER TABLE ONLY public.directors
 
 
 --
+-- TOC entry 2733 (class 2606 OID 16445)
 -- Name: genres genres_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -352,6 +405,7 @@ ALTER TABLE ONLY public.genres
 
 
 --
+-- TOC entry 2735 (class 2606 OID 16443)
 -- Name: genres genres_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -360,6 +414,7 @@ ALTER TABLE ONLY public.genres
 
 
 --
+-- TOC entry 2727 (class 2606 OID 16425)
 -- Name: movies movies_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -368,6 +423,7 @@ ALTER TABLE ONLY public.movies
 
 
 --
+-- TOC entry 2729 (class 2606 OID 16427)
 -- Name: movies movies_title_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -376,6 +432,7 @@ ALTER TABLE ONLY public.movies
 
 
 --
+-- TOC entry 2731 (class 2606 OID 16435)
 -- Name: rentals rentals_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -384,6 +441,7 @@ ALTER TABLE ONLY public.rentals
 
 
 --
+-- TOC entry 2717 (class 2606 OID 16405)
 -- Name: users users_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -392,6 +450,7 @@ ALTER TABLE ONLY public.users
 
 
 --
+-- TOC entry 2719 (class 2606 OID 16403)
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -400,6 +459,7 @@ ALTER TABLE ONLY public.users
 
 
 --
+-- TOC entry 2721 (class 2606 OID 16407)
 -- Name: users users_tel_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -408,6 +468,7 @@ ALTER TABLE ONLY public.users
 
 
 --
+-- TOC entry 2736 (class 2606 OID 16446)
 -- Name: movies movies_director_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -416,6 +477,7 @@ ALTER TABLE ONLY public.movies
 
 
 --
+-- TOC entry 2737 (class 2606 OID 16451)
 -- Name: movies movies_genre_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -424,6 +486,7 @@ ALTER TABLE ONLY public.movies
 
 
 --
+-- TOC entry 2739 (class 2606 OID 16461)
 -- Name: rentals rentals_movie_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -432,12 +495,15 @@ ALTER TABLE ONLY public.rentals
 
 
 --
+-- TOC entry 2738 (class 2606 OID 16456)
 -- Name: rentals rentals_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.rentals
     ADD CONSTRAINT rentals_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id);
 
+
+-- Completed on 2020-01-20 21:15:39
 
 --
 -- PostgreSQL database dump complete
