@@ -2,20 +2,34 @@
 {<body}
 	<li class="table-header">
 		<div class="col-1">Id</div>
-		<div class="col-2">Przez</div>
-		<div class="col-3">Data wypożyczenia</div>
-		<div class="col-4">data zwrotu</div>
-		<div class="col-5" ></div>
-		<div class="col-6" ></div>
+		<div class="col-2">Film</div>
+		<div class="col-3">Przez</div>
+		<div class="col-4">Data od do</div>
+		<div class="col-6">Edytuj</div>
+		<div class="col-7">Usuń</div>
 	</li>
 		{#rentals}
 		  <li class="table-row">
 			<div class="col-1" data-label="id">{id}</div>
-			<div class="col-2" data-label="user">{user_name}</div>
-			<div class="col-3" data-label="date-from">{date_on}</div>
-			<div class="col-4" data-label="date-to">{date_to}</div>
-			<div class="col-5" data-label="edit"> <b> edytuj </b></div>
-			<div class="col-6" data-label="delete"><b>usuń</b></div>
-		  </li>
+			<div class="col-2" data-label="title">{title}</div>
+			<div class="col-3" data-label="user">{first_name} {last_name}</div>
+			<div class="col-4" data-label="date">{date_on} do {date_to}</div>
+			<div class="col-6" data-label="edit">
+			<button type="button" class="btn btn-secondary pull-right updateRental"
+			data-toggle="modal"
+			data-target="#editRentalForm"
+			data-id="{id}"
+			data-user_id="{user_id}"
+			data-movie_id="{movie_id}"
+			data-date_on="{date_on}"
+			data-date_to="{date_to}">
+				<span class="fa fa-edit" aria-hidden="true"></span>
+			</button>
+		</div>
+		<div class="col-7" data-label="delete">
+			<button type="button" class="btn btn-danger deleteRental" data-id="{id}">
+				<span class="fa fa-remove" aria-hidden="true"></span>
+			</button>
+		</div>
 		{/rentals}
 {/body}

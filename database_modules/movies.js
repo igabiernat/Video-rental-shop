@@ -1,33 +1,5 @@
 module.exports = function(app, pgClient) {
-	
-	app.get(['/getAllMovies'], (request, response) => {
-		pgClient.query('SELECT * FROM movies ORDER BY id', (error, results) => {
-			if (error) {
-                response.status(500).json(error.detail)
-            } else {
-                response.status(200).json(results.rows)
-            }
-		})
-	});
-	
-	app.get(['/getMovieById'], (request, response) => {
-        let id = parseInt(request.param("id"));
 
-        query = {
-            text: 'SELECT * FROM movies WHERE id = $1',
-            values: [id]
-        };
-
-        pgClient.query(query, (error, results) => {
-            if (error) {
-				console.log(id);
-                response.status(500).json(error.detail)
-            } else {
-                response.status(200).json(results.rows)
-            }
-        })
-    });
-	
 	app.post(['/addMovie'], (request, response) => {
 		const title = request.body.title;
 		const director_id = parseInt(request.body.director_id);
@@ -41,7 +13,6 @@ module.exports = function(app, pgClient) {
 		pgClient.query(query, (error, results) => {
 			if (error) {
                 response.status(500).json(error.detail)
-				console.log(request.param("director_id"));
             } else {
 				response.redirect('/');
             }
@@ -63,12 +34,12 @@ module.exports = function(app, pgClient) {
 		})
     });
 	
-	app.put(['/updateMovie'], (request, response) => {
-		let id = parseInt(request.param("id"));
-		const title = request.param("title");
-		const director_id = request.param("director_id");
-		const year = request.param("year");
-		const genre_id = request.param("genre_id");
+	app.post(['/updateMovie'], (request, response) => {
+		const id = request.body.id;
+		const title = request.body.title;
+		const director_id = request.body.director_id;
+		const year = request.body.year;
+		const genre_id = request.body.genre_id;
 		
 		query = {
 			text: 'UPDATE movies SET title=coalesce($2,title), director_id=coalesce(CAST($3 as INTEGER),director_id), year=coalesce(CAST($4 AS INTEGER),year), genre_id=coalesce(CAST($5 AS INTEGER),genre_id) WHERE id=$1',
@@ -76,26 +47,10 @@ module.exports = function(app, pgClient) {
 		}
 		pgClient.query(query, (error, results) => {
             if (error) {
-                response.status(500).json(error.detail)
+                response.status(500).json(error.detail);
             } else {
-                response.status(200).json(results.rows)
+                response.redirect('/');
             }
 		})
 	});
-	
-	app.get(['/getCatalogData'], (req, res) => {
-        pgClient.query('SELECT m.id, m.title, CONCAT(d.first_name, \' \', d.last_name) AS director, g.name AS genre FROM movies m, directors d, genres g WHERE d.id = m.director_id AND g.id = m.genre_id ORDER BY m.id ASC', (error, results) => {
-            if (error) {
-                res.status(500).json(error.detail)
-            } else {
-                res.status(200).json(results.rows)
-            }
-        })
-    });
-	
-	
-	
-	
-	
-	
 }

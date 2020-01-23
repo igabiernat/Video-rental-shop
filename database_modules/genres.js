@@ -1,36 +1,7 @@
 module.exports = function(app, pgClient){
 	
-	app.get(['/getAllGenres'], (request, response) => {
-		pgClient.query('SELECT * FROM genres ORDER BY id ASC', (error, results) => {
-			if (error) {
-                console.log(error);
-                response.status(500).json(error.detail)
-            } else {
-                response.status(200).json(results.rows)
-            }
-		})
-	});
-	
-	app.get(['/getGenreById'], (request, response) => {
-        let id = parseInt(request.param("id"));
-
-        query = {
-            text: 'SELECT * FROM genres WHERE id = $1',
-            values: [id]
-        };
-
-        pgClient.query(query, (error, results) => {
-            if (error) {
-				console.log(id);
-                response.status(500).json(error.detail)
-            } else {
-                response.status(200).json(results.rows)
-            }
-        })
-    });
-	
 	app.post(['/addGenre'], (request, response) => {
-		const name = request.param("name");
+		const name = request.body.name;
 		
 		query = {
 			text: 'INSERT INTO genres (name) VALUES ($1)',
@@ -38,14 +9,14 @@ module.exports = function(app, pgClient){
 		}
 		pgClient.query(query, (error, results) => {
 			if (error) {
-                response.status(500).json(error.detail)
+                alert('Wypełnij wszystkie pola');
             } else {
-                response.status(200).json(results.rows)
+				response.redirect('/getAllGenres');
             }
 		})
 	});
 	
-	app.delete(['/deleteGenre'], (request, response) => {
+	app.delete(['/deleteGenre/:id'], (request, response) => {
 		let id = parseInt(request.param("id"));
 		
 		query = {
@@ -57,24 +28,24 @@ module.exports = function(app, pgClient){
             if (error) {
                 response.status(500).json(error.detail)
             } else {
-                response.status(200).json(results.rows)
+                response.send(200)
             }
 		})
     });
 	
-	app.put(['/updateGenre'], (request, response) => {
-		let id = parseInt(request.param("id"));
-		const name = request.param("name");
+	app.post(['/updateGenre'], (request, response) => {
+		const id = request.body.id;
+		const name = request.body.name;
 		
 		query = {
-			text: 'UPDATE genres SET name=$2 WHERE id=$1',
+			text: 'UPDATE genres SET name=coalesce($2,name) WHERE id=$1',
 			values: [id, name]
 		}
 		pgClient.query(query, (error, results) => {
             if (error) {
                 response.status(500).json(error.detail)
             } else {
-                response.status(200).json(results.rows)
+                response.redirect('/getAllGenres');
             }
 		})
 	});

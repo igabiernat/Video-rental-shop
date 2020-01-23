@@ -1,6 +1,6 @@
 body {
     font-family: 'lato', sans-serif;
-  }
+}
   .container {
     max-width: 1000px;
     margin-left: auto;
@@ -18,21 +18,27 @@ body {
   
   li {
       border-radius: 3px;
-      padding: 25px 30px;
+      padding: 25px 30 px;
+      padding-bottom: 25px;
+      padding-top: 25px;
       display: flex;
       justify-content: space-between;
-      margin-bottom: 25px;
+      margin-bottom: 15px;
+      margin-top: 15;
   }
   .table-header {
       background-color: #9966FF;
-      font-size: 14px;
+      font-size: 17px;
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 0.03em;
+      text-align: center;
+
   }
   .table-row {
       background-color: #ffffff;
       box-shadow: 0px 0px 9px 0px rgba(125, 79, 151, 0.349);
+      text-align: center;
   }
 .col-1 {
     flex-basis: 10%;
@@ -47,24 +53,22 @@ body {
     flex-basis: 20%;
 }
 .col-5{
-    flex-basis: 10%;
-    text-align: center;
-    text-transform: uppercase;
-    color: 	#4169E1;
+    flex-basis: 8%;
 }
 .col-6{
-    flex-basis: 10%;
-    text-align: center;
+    flex-basis: 6%;
+    text-align: right;
     text-transform: uppercase;
-    color:red;
+    color: #342BAF;
+    text-shadow: 2px 2px 2px  #d1a9e4;
 }
-.col-5:hover{
-    color: rgb(127, 153, 230);
+.col-7{
+    flex-basis: 6%;
+    text-align: right;
+    text-transform: uppercase;
+    color: #800000;
+    text-shadow: 2px 2px 2px  #d1a9e4;
 }
-.col-6:hover{
-    color:rgb(202, 139, 142);
-}
-
 
 
 
@@ -72,24 +76,42 @@ body {
 
 
 .menu-1 {
-    flex-basis: 25%;   
+    flex-basis: 15%;   
 }
 .menu-2 {
-    flex-basis: 25%;
+    flex-basis: 15%;
 }
 .menu-3 {
-    flex-basis: 25%;
+    flex-basis: 15%;
 }
 .menu-4 {
-    flex-basis: 25%;
+    flex-basis: 20%;
+}
+.menu-5{
+    flex-basis: 20% ;
+}
+.dropdown{
+    flex-basis: 10%;
 }
 
-#rental:hover{
+#rentals:hover{
     color: #CC99FF;
 }
 #catalog:hover{
     color: #CC99FF;
 }
+#genres:hover{
+    color: #CC99FF;
+}
+#users:hover{
+    color: #CC99FF;
+}
+#directors:hover{
+    color: #CC99FF;
+}
+
+
+
 
 .custom-select{
   position: relative;
@@ -120,7 +142,7 @@ select{
     margin: 0;
     display: block;
     width: 100%;
-    padding: 2px 5px 5px 5px
+    
     font-size: 14px;
     color: #714BB9;
     cursor: pointer;

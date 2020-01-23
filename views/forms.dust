@@ -1,0 +1,368 @@
+<div class="modal fade" id="addMovieForm" tabindex="-1" role="dialog" aria-labelledby="addMovieFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <form method="post" action="/addMovie">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Dodaj film</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+              <div class="modal-body">
+                <div class="form-group">
+                    <label>Tytuł</label>
+                    <input type="text" required class="form-control" name="title" />
+                </div>
+                <div class="form-group">
+                  <label for="directorFormControlSelect">Reżyser</label>
+                  <select class="form-control" id="directorFormControlSelect" name="director_id">
+                      {#directors}
+                          <option value ="{id}" id="director_{id}">{first_name} {last_name}</option>
+                      {/directors}
+                  </select>
+                </div>
+                <div class="form-group">
+                    <label>Rok</label>
+                    <input type="number" required class="form-control" name="year" />
+                </div>
+                <div class="form-group">
+                  <label for="genreFormControlSelect">Gatunek</label>
+                  <select class="form-control" id="genreFormControlSelect" name="genre_id">
+                      {#genres}
+                          <option value ="{id}" id="genre_{id}">{name}</option>
+                      {/genres}
+                  </select>
+                </div>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+              <input type="submit" class="btn btn-primary" value="Submit"/>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="addDirectorForm" tabindex="-1" role="dialog" aria-labelledby="addDirectorFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <form method="post" action="/addDirector">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Dodaj reżysera</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+              <div class="modal-body">
+                <div class="form-group">
+                    <label>Imię</label>
+                    <input type="text" required class="form-control" name="first_name" />
+                </div>
+                <div class="form-group">
+                    <label>Nazwisko</label>
+                    <input type="text" required class="form-control" name="last_name" />
+                </div>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+              <input type="submit" class="btn btn-primary" value="Submit"/>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="addRentalForm" tabindex="-1" role="dialog" aria-labelledby="addRentalFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <form method="post" action="/addRental">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Dodaj wypożyczenie</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="userRentalFormControlSelect">Imię i Nazwisko</label>
+                  <select class="form-control" id="userRentalFormControlSelect" name="user_id">
+                      {#users}
+                          <option value ="{id}" id="userRental_{id}">{first_name} {last_name}</option>
+                      {/users}
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="movieRentalFormControlSelect">Film</label>
+                  <select class="form-control" id="movieRentalFormControlSelect" name="movie_id">
+                      {#movies}
+                          <option value ="{id}" id="movieRent_{id}">{title}</option>
+                      {/movies}
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="date_onPicker">Data wypożyczenia</label>
+                    <input type="text" required class="form-control" id="date_onPicker" name="date_on" />
+                </div>
+                <div class="form-group">
+                  <label for="date_toPicker">Data oddania</label>
+                    <input type="text" required class="form-control" id="date_toPicker" name="date_to" />
+                </div>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+              <input type="submit" class="btn btn-primary" value="Submit"/>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="addUserForm" tabindex="-1" role="dialog" aria-labelledby="addUserFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <form method="post" action="/addUser">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Dodaj użytkownika</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+              <div class="modal-body">
+                <div class="form-group">
+                    <label>Imię</label>
+                    <input type="text" required class="form-control" name="first_name" />
+                </div>
+                <div class="form-group">
+                    <label>Nazwisko</label>
+                    <input type="text" required class="form-control" name="last_name" />
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required class="form-control" name="email" />
+                </div>
+                <div class="form-group">
+                    <label>Nr telefonu</label>
+                    <input type="tel" required class="form-control" name="tel" />
+                </div>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+              <input type="submit" class="btn btn-primary" value="Submit"/>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="addGenreForm" tabindex="-1" role="dialog" aria-labelledby="addGenreFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <form method="post" action="/addGenre">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Dodaj gatunek</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+              <div class="modal-body">
+                <div class="form-group">
+                    <label>Nazwa gatunku</label>
+                    <input type="text" required class="form-control" name="name" />
+                </div>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+              <input type="submit" class="btn btn-primary" value="Submit"/>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="editMovieForm" tabindex="-1" role="dialog" aria-labelledby="editMovieFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <form method="post" action="/updateMovie">
+            <input type="hidden" id="edit-movie-form-id" name="id" />
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edytuj film</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+              <div class="modal-body">
+                <div class="form-group">
+                    <label>Tytuł</label>
+                    <input type="text" class="form-control" name="title" id="edit-movie-form-title" />
+                </div>
+                <div class="form-group">
+                  <label for="edit-movie-form-director_id">Reżyser</label>
+                  <select class="form-control" id="edit-movie-form-director_id" name="director_id">
+                      {#directors}
+                          <option value ="{id}" id="director_{id}">{first_name} {last_name}</option>
+                      {/directors}
+                  </select>
+                </div>
+                <div class="form-group">
+                    <label>Rok</label>
+                    <input type="number" class="form-control" name="year" id="edit-movie-form-year"/>
+                </div>
+                <div class="form-group">
+                  <label for="edit-movie-form-genre_id">Gatunek</label>
+                  <select class="form-control" id="edit-movie-form-genre_id" name="genre_id">
+                      {#genres}
+                          <option value ="{id}" id="genre_{id}">{name}</option>
+                      {/genres}
+                  </select>
+                </div>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+              <input type="submit" class="btn btn-primary" value="Submit"/>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="editGenreForm" tabindex="-1" role="dialog" aria-labelledby="editGenreFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <form method="post" action="/updateGenre">
+            <input type="hidden" id="edit-genre-form-id" name="id" />
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edytuj gatunek</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+              <div class="modal-body">
+                <div class="form-group">
+                    <label>Nazwa</label>
+                    <input type="text" class="form-control" name="name" id="edit-genre-form-name" />
+                </div>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+              <input type="submit" class="btn btn-primary" value="Submit"/>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+   <div class="modal fade" id="editDirectorForm" tabindex="-1" role="dialog" aria-labelledby="editDirectorFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <form method="post" action="/updateDirector">
+            <input type="hidden" id="edit-director-form-id" name="id" />
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edytuj reżysera</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+              <div class="modal-body">
+                <div class="form-group">
+                    <label>Imię</label>
+                    <input type="text" class="form-control" name="first_name" id="edit-director-form-first_name" />
+                </div>
+                <div class="form-group">
+                    <label>Nazwisko</label>
+                    <input type="text" class="form-control" name="last_name" id="edit-director-form-last_name" />
+                </div>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+              <input type="submit" class="btn btn-primary" value="Submit"/>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="editUserForm" tabindex="-1" role="dialog" aria-labelledby="editUserFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <form method="post" action="/updateUser">
+            <input type="hidden" id="edit-user-form-id" name="id" />
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edytuj użytkownika</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+              <div class="modal-body">
+                <div class="form-group">
+                    <label>Imię</label>
+                    <input type="text" class="form-control" name="first_name" id="edit-user-form-first_name" />
+                </div>
+                <div class="form-group">
+                    <label>Nazwisko</label>
+                    <input type="text" class="form-control" name="last_name" id="edit-user-form-last_name" />
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email" id="edit-user-form-email" />
+                </div>
+                <div class="form-group">
+                    <label>Nr telefonu</label>
+                    <input type="tel" class="form-control" name="tel" id="edit-user-form-tel"/>
+                </div>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+              <input type="submit" class="btn btn-primary" value="Submit"/>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="editRentalForm" tabindex="-1" role="dialog" aria-labelledby="editRentalFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <form method="post" action="/updateRental">
+            <input type="hidden" id="edit-rental-form-id" name="id" />
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edytuj wypożyczenie</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="edit-rental-form-user_id">Imię i Nazwisko</label>
+                  <select class="form-control" id="edit-rental-form-user_id" name="user_id">
+                      {#users}
+                          <option value ="{id}" id="userRental_{id}">{first_name} {last_name}</option>
+                      {/users}
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="edit-rental-form-movie_id">Film</label>
+                  <select class="form-control" id="edit-rental-form-movie_id" name="movie_id">
+                      {#movies}
+                          <option value ="{id}" id="movieRental_{id}">{title}</option>
+                      {/movies}
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="edit-date_onPicker">Data wypożyczenia</label>
+                    <input type="text" class="form-control" id="edit-date_onPicker" name="date_on" />
+                </div>
+                <div class="form-group">
+                  <label for="edit-date_toPicker">Data oddania</label>
+                    <input type="text" class="form-control" id="edit-date_toPicker" name="date_to" />
+                </div>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+              <input type="submit" class="btn btn-primary" value="Submit"/>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+

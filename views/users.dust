@@ -1,0 +1,36 @@
+{>"layout" /}
+{<body}
+	<li class="table-header">
+		<div class="col-1">Id</div>
+		<div class="col-2">Imię i nazwisko</div>
+		<div class="col-3">Email</div>
+		<div class="col-4">Nr telefonu</div>
+		<div class="col-6">Edytuj</div>
+		<div class="col-7">Usuń</div>
+	</li>
+	{#users}
+	  <li class="table-row" id="movie_{id}">
+		<div class="col-1" data-label="id">{id}</div>
+		<div class="col-2" data-label="name">{first_name} {last_name}</div>
+		<div class="col-3" data-label="email">{email}</div>
+		<div class="col-4" data-label="tel">{tel}</div>
+		<div class="col-6" data-label="edit">
+			<button type="button" class="btn btn-secondary pull-right updateUser"
+			data-toggle="modal"
+			data-target="#editUserForm"
+			data-id="{id}"
+			data-first_name="{first_name}"
+			data-last_name="{last_name}"
+			data-email="{email}"
+			data-tel="{tel}">
+				<span class="fa fa-edit" aria-hidden="true"></span>
+			</button>
+		</div>
+		<div class="col-7" data-label="delete">
+			<button type="button" class="btn btn-danger deleteUser" data-id="{id}">
+				<span class="fa fa-remove" aria-hidden="true"></span>
+			</button>
+		</div>
+	  </li>
+	{/users}
+{/body}

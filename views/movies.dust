@@ -5,8 +5,9 @@
 		<div class="col-2">Tytuł</div>
 		<div class="col-3">Reżyser</div>
 		<div class="col-4">Gatunek</div>
-		<div class="col-5">Edytuj</div>
-		<div class="col-6">Usuń</div>
+		<div class="col-5">Rok premiery</div>
+		<div class="col-6">Edytuj</div>
+		<div class="col-7">Usuń</div>
 	</li>
 	{#movies}
 	  <li class="table-row" id="movie_{id}">
@@ -14,12 +15,19 @@
 		<div class="col-2" data-label="title">{title}</div>
 		<div class="col-3" data-label="director">{director}</div>
 		<div class="col-4" data-label="genre">{genre}</div>
-		<div class="col-5" data-label="edit">
-			<button type="button" class="btn btn-secondary pull-right updateMovie">
+		<div class="col-5" data-label="year">{year}</div>
+		<div class="col-6" data-label="edit">
+			<button type="button" class="btn btn-secondary pull-right updateMovie" data-toggle="modal"
+			data-target="#editMovieForm"
+			data-id="{id}"
+			data-title="{title}"
+			data-director="{director}"
+			data-genre="{genre}"
+			data-year="{year}">
 				<span class="fa fa-edit" aria-hidden="true"></span>
 			</button>
 		</div>
-		<div class="col-6" data-label="delete">
+		<div class="col-7" data-label="delete">
 			<button type="button" class="btn btn-danger deleteMovie" data-id="{id}">
 				<span class="fa fa-remove" aria-hidden="true"></span>
 			</button>

@@ -24,7 +24,33 @@ app.use(
   })
 )
 var directorsBase = dust.makeBase({});
-var hehe;
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', (request, response) => {
+    const database = require('./database_modules/basicQueries')(directorsBase, pgClient, function(db){
+        response.render('movies',db);
+    });
+});
+app.get(['/getAllDirectors'], (request, response) => {
+    const database = require('./database_modules/basicQueries')(directorsBase, pgClient, function(db){
+        response.render('directors',db);
+    });
+});
+app.get(['/getAllUsers'], (request, response) => {
+    const database = require('./database_modules/basicQueries')(directorsBase, pgClient, function(db){
+        response.render('users',db);
+    });
+});
+app.get(['/getAllRentals'], (request, response) => {
+    const database = require('./database_modules/basicQueries')(directorsBase, pgClient, function(db){
+        response.render('rentals',db);
+    });
+});
+app.get(['/getAllGenres'], (request, response) => {
+    const database = require('./database_modules/basicQueries')(directorsBase, pgClient, function(db){
+        response.render('genres',db);
+    });
+});
 
 require('./database_modules/directors')(app, pgClient);
 require('./database_modules/movies')(app, pgClient);
@@ -32,27 +58,7 @@ require('./database_modules/genres')(app, pgClient);
 require('./database_modules/rentals')(app, pgClient);
 require('./database_modules/users')(app, pgClient);
 
-app.use(express.static(__dirname + '/public'));
 
-app.get('/', (request, response) => {
-  pgClient.query('SELECT * FROM directors ORDER BY id ASC', (error, results) => {
-      if(error){
-        throw err
-      }
-      else{
-        directorsBase = directorsBase.push({directors: results.rows});
-        console.log(directorsBase);
-        }
-    })
-	pgClient.query('SELECT m.id, m.title, CONCAT(d.first_name, \' \', d.last_name) AS director, m.director_id AS director_id, m.genre_id AS genre_id, g.name AS genre FROM movies m, directors d, genres g WHERE d.id = m.director_id AND g.id = m.genre_id ORDER BY m.id ASC', (error, results) => {
-        if (error) {
-            response.status(500).json(error.detail)
-        } else {
-            directorsBase = directorsBase.push({movies: results.rows});
-		        response.render('movies', directorsBase);
-        }
-    });
-});
 
 app.listen(port, () => {
 	pgClient.connect(err => {

@@ -1,0 +1,29 @@
+{>"layout" /}
+{<body}
+	<li class="table-header">
+		<div class="col-1">Id</div>
+		<div class="col-2">Nazwa</div>
+		<div class="col-6">Edytuj</div>
+		<div class="col-7">Usuń</div>
+	</li>
+	{#genres}
+	  <li class="table-row" id="genre_{id}">
+		<div class="col-1" data-label="id">{id}</div>
+		<div class="col-2" data-label="name">{name}</div>
+		<div class="col-6" data-label="edit">
+			<button type="button" class="btn btn-secondary pull-right updateGenre"
+			data-toggle="modal"
+			data-target="#editGenreForm"
+			data-id="{id}"
+			data-name="{name}">
+				<span class="fa fa-edit" aria-hidden="true"></span>
+			</button>
+		</div>
+		<div class="col-7" data-label="delete">
+			<button type="button" class="btn btn-danger deleteGenre" data-id="{id}">
+				<span class="fa fa-remove" aria-hidden="true"></span>
+			</button>
+		</div>
+	  </li>
+	{/genres}
+{/body}
